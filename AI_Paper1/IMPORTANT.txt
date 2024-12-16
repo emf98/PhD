@@ -4,3 +4,7 @@ The most relevant and up-to-date with my actual research is the NAO_ANNs file.
 The in-use data for my ANNs is majorly in there, as are some of the preprocessing files. 
 
 Up-to-date testing code is in the ANN-code file. 
+
+12/16/2024
+After a constant battle of trying to push to what was my original PhD_Work Repo and failing due to pickle files, I now have it fixed. 
+The most "up to date", if you can call it that, content in here is within the `Full_GPH_PV_Models` folder. The merged model folder contains my code relevant to my AGU 2024 presentation. 
