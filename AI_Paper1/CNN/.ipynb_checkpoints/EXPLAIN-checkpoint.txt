@@ -1,0 +1,13 @@
+10/15/2024
+(Referring to CNNs) See now what's actually kinda nice about all of this is that it reduces the number of files I need ... sorta. 
+I just don't need to generate input arrays. 
+I need to generate my temperature arrays for the 9 CPC Climate regions.
+https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/regions.shtml
+
+Starting with West North Central ... approx 42-50N, 115W-100W
+Whole CONUS is lat=slice(50,22) lon=slice(-127,-67)
+
+PYTHON FILES:
+`TempAnoms` distinguishes the temp data for the region ... change accordingly. 
+`ClassifyDaysofRegion` classifies each day into its appropriate category ... those files are in ClassFiles. 
+`CreateClimoClassbyRegion` creates a climo probability dataset for the region of interest. 

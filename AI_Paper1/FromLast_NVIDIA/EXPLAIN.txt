@@ -1,0 +1,8 @@
+Essentially, everything in here is recent from the last time I ran the ANNs in early October 2024.
+If I need to run these again ... I can. I won't be happy about it, but I will probably need the images from them eventually within my dissertation for explaining why things did not go as well as I would have hoped.
+
+Data files (mostly) are here in data. Otherwise, REDO_ProcessERA5 has them in QuantileDataset under leads1959 and ABBRV1959. 
+
+`SkillStat_Loop` is the big loop for all skill stats across lead times
+`skillscore_reloop` was the loop I did for the running mean data
+`barplotSHAP` is the testing file, essentially 

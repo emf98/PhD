@@ -1,0 +1,29 @@
+11/6/2024
+
+Just to write out what is going on here... 
+I started by reuploading all the relevant pre-processing files that I might need. I downloaded the 500hPa GPH daata, and organized that accordingly. I structured it as daily anomalies relative to what is climatologically expected. I need to check if this correctly adjusts for climatological influence. 
+I saved this as gridded. 
+
+I will need to get temperature data next and process it accordingly. (i.e., region, daily classification as just + or - anomaly...)
+
+11/7/2024
+So, step one:
+Download and reformat with `ReformatERA5data`
+Step two:
+`RecombineArray` to create the reduced 500hPa gph grid daily anomalies (so these are adjusted for climatology) over the polar cap for the full POR. 
+Step three: 
+Looking at Butler et al 2017 and known NAO connections with extreme temperatures, lets choose a temperature region. Europe (10-45E 60-75N)
+Step four: 
+I regridded temp and gph anomaly to single-degree resolution. 
+Step five: 
+Use the Quartile Class file to distinguish positive or negative anomalies. 
+Step six:
+ClimoClass shows the probability of anomaly. BOTH OF THESE CODING FILES AND ASSOCIATED PICKLE OUTPUTS ARE IN CLASSING. 
+
+11/12/2024
+I am going to be adding some major changes to the data preprocessing ... Bandpass filtering/harmonics on the climate data to capture the subseasonal behavior of the NAO index.
+The 2.5 degree regridded gph data over the ACTUAL NAO (100-10W and 30-80N) area is now in here.
+
+11/22/2024 
+I did Fast Fourier Transformations, now listed in the `PreProcessing` File, for a period of 10-50 days. 
+I also transitioned to processing PV data after creating a successful NAO model. 

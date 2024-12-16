@@ -1,0 +1,44 @@
+##2Categories; Updated Model Hyperparameters
+
+CAP (128 batch)
+0 - basic_ANN(number_inputs, 2, 32, 16, 0.0175, 0.01, 0.015, 0.01, 0.28)
+5 - basic_ANN(number_inputs, 2, 64, 16, 0.015, 0.013, 0.015, 0.013, 0.34)
+10 - basic_ANN(number_inputs, 2, 64, 16, 0.015, 0.01, 0.015, 0.01, 0.3)
+14 - basic_ANN(number_inputs, 2, 64, 16, 0.015, 0.01, 0.01, 0.01, 0.3)
+20 - basic_ANN(number_inputs, 2, 64, 16, 0.015, 0.01, 0.01, 0.01, 0.3)
+
+GL (64 batch)
+0 - three_ANN(number_inputs, 2, 64, 32, 16, 0.01, 0.006, 0.005, 0.005, 0.005, 0.005, 0.955, epochs)
+5 - three_ANN(number_inputs, 2, 64, 32, 16, 0.01, 0.006, 0.005, 0.005, 0.005, 0.005, 0.95, epochs)
+10 - three_ANN(number_inputs, 2, 64, 32, 16, 0.01, 0.008, 0.005, 0.005, 0.005, 0.001, 0.9, epochs)
+14 - three_ANN(number_inputs, 2, 64, 32, 16, 0.009, 0.005, 0.005, 0.005, 0.005, 0.001, 0.9, epochs)
+20 - three_ANN(number_inputs, 2, 64, 32, 16, 0.009, 0.005, 0.005, 0.005, 0.005, 0.001, 0.8, epochs)
+
+
+CONUS (batch 128)
+0 - three_ANN(number_inputs, 2, 64, 32, 16, 0.006, 0.0015, 0.0055, 0.001, 0.005, 0.001, 0.9, epochs)
+5 - three_ANN(number_inputs, 2, 128, 32, 16, 0.009, 0.005, 0.009, 0.005, 0.005, 0.005, 0.65, epochs)
+10 - three_ANN(number_inputs, 2, 128, 32, 16, 0.01, 0.005, 0.01, 0.005, 0.005, 0.005, 0.65, epochs)
+14 - three_ANN(number_inputs, 2, 128, 32, 16, 0.01, 0.005, 0.009, 0.005, 0.005, 0.005, 0.6, epochs)
+20 - three_ANN(number_inputs, 2, 128, 32, 16, 0.01, 0.005, 0.009, 0.005, 0.005, 0.005, 0.5, epochs)
+
+EUR
+0 -
+5 - 
+10 - 
+14 - 
+20 - 
+
+CAN
+0 -
+5 - 
+10 - 
+14 - 
+20 - 
+
+SIBERIA
+0 -
+5 - 
+10 - 
+14 - 
+20 - 
