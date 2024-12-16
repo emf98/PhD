@@ -1,0 +1,3 @@
+Files in this folder reflect the working merged model and associated figures I presented on at AGU in 2024. 
+There is still room for improvement here, extending actual forecast ability beyond the synoptic scale. 
+
