@@ -9,3 +9,4 @@ Up-to-date testing code is in the ANN-code file.
 
 3/31/2025
 Finally added in the RF stuff I have been working on. 
+EOF analysis also initiated here. 

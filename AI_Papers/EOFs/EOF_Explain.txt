@@ -1,0 +1,34 @@
+2/12/2025
+This will be my new attempt at creating a model that uses the EOFs as model input. 
+I need to save data ... regrid in the dataset import process perhaps? 
+
+ReformatERA5data.ipynb 
+I did actually fix this file to do the regridding in the downloading itself. 
+
+-> Z @ all levels for N of 30 - DONE (N30_gph_25deg.p) NEEDS TO BE DIVIDED BY 10
+-> V @ all levels, T @ all levels for 45N-75N
+
+PV_ERA5data.ipynb
+PV @ 100 at all lat and lon (cap_pv100hPa.p) ... needs to be regridded to 2.5, and that is in PV_Regridder.ipynb (pvu100_25deg.p)... LEAP DAY WAS ALSO REMOVED
+
+2/17/2025
+I will return to this. I need to get data that has consistent pressure levels across each variable .... which this current state does NOT have. 
+V and T specifically do not have the proper # of levels between the surface and 1. 
+
+###################################################################################################################################################
+
+3/25/2025
+I have returned to this in an effort to try again at reformatting data. 
+This time I will be pulling from Zheng's ERA 5 data in an attempt to have consistent levels (at least for GPH/VT ... PV is on its own).
+
+Download V, T, and GPH in ReformatERA5data.ipynb ... I did NOT regrid because the data was already in a 2-degree resolution. I also tacked on the October values. 
+
+PV is only on 350 isentropic level, because I had to choose something. I can go back and save more of these. 
+GPH is N of 20 degrees. 
+
+V file = 1959_v_2deg.p
+T file  = 1959_t_2deg.p
+GPH file = 1959_gph_2deg.p (DIVIDED BY 10)
+PV file = cap_pv350pt.p
+
+I had to only do 62 years because some data was missing. womp womp. 
