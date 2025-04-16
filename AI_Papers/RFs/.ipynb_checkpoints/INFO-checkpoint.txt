@@ -1,3 +1,10 @@
 3/31/2025
 
 Here are Random Forest Models associated with a manuscript in preparation for submission to the AMS AI Journal.
+
+Updated 4/16/2025 
+
+Changes to coding files reflect edits needed prior to manuscript submission. 
+This primarily includes changes to skill scores (BSS, PAS, RAS), as well as reducing the number of features plotted for the second RF model. 
+
+"manuscript_images" was also added for the preliminary pass of images for the manuscript.
