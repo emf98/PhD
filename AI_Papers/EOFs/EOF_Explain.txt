@@ -16,7 +16,6 @@ I will return to this. I need to get data that has consistent pressure levels ac
 V and T specifically do not have the proper # of levels between the surface and 1. 
 
 ###################################################################################################################################################
-
 3/25/2025
 I have returned to this in an effort to try again at reformatting data. 
 This time I will be pulling from Zheng's ERA 5 data in an attempt to have consistent levels (at least for GPH/VT ... PV is on its own).
@@ -32,7 +31,6 @@ GPH file = 1959_gph_2deg.p (DIVIDED BY 10)
 PV file = cap_pv350pt.p
 
 I had to only do 62 years because some data was missing. womp womp. 
-
 ###################################################################################################################################################
 3/31/2025
 
@@ -51,7 +49,8 @@ I am still working on ironing out whether I did this correctly with Zheng.
 4/3/2025
 
 So, it seems that I did just fine with my initial test of a PV model. 
-Now, I am going to be testing to see whether or not I can choose the ideal # of PCs for the model by using Sequential Feature Selection (SFS). 
+Now, I am going to be testing to see whether or not I can choose the ideal # of PCs for the model by using Sequential Feature Selection. 
+file:///C:/Users/ef935217/Downloads/Wu%20et%20al%202022%20Modeling%20stratospheric%20polar%20vortex%20variation%20and%20identifying%20vortex%20extremes%20using%20explainable%20machine%20learning.pdf
 
 I made a separate folder for this. I will do files for each metric.
 
@@ -62,13 +61,44 @@ I started with PV and unfortunately realized that the model was sensitive + need
 4/7/2025
 
 After some goofing around with hyperparameter tuning and messing with the H100 containers, I now have a more solidified direction for myself. 
-H100_coding is where I will store relevant code and output from each INIT. 
+NVIDIA_codefiles is where I will store relevant code and output from each INIT. 
 
 I am going to start with doing PC analysis on all three features. 
 I will choose the correct # of modes for each and concat them into one array. 
 Thereafter, I will use a RF model to conduct SFS.
 
+
+Please open a new SSH connection on a separate terminal session.
+
+ssh -L 8267:gpu003:8267 ngc
+
+Then your Jupyter Lab session will be available at: http://localhost:8267
+
+Your password is: lBvitd
+
 ###################################################################################################################################################
 4/10/2025
 
-I have been working in the H100 server on this work. Check for updates in the H100_coding folder. 
+I have been working in the H100 server on this work. Check for updates in the NVIDIA_codefiles folder. 
+###################################################################################################################################################
+4/21/2025
+
+I came back here after some issues with tuning and model performance to reduce my predictands to three categories ... This is done with the intention of just, uhhhh, trying to get better predictions lmao. 
+"classedTHREE_europetempanoms.p"
+
+###################################################################################################################################################
+4/23/2025
+Back again!!
+
+So, update. Alex so graciously helped me get set up with a container that had tensorflow 2.14 instead of the more recent versions so I am now able to run keras-tuner! ... oh, and ITs set up a new graphcast container for me that is the same. lol. oooopsie. 
+
+That being said, following some promising results from initial work, I will now be diving head-on into this project. The first thing that needs to be done is updating my PV domain. I am not taking ALL of the data ... which is a slight problem. 
+So, going back in I am going to extend the extent of the PV domain into the mid-latitudes ... a small amount (I had a thought here that this may pick up some of the TPV-like features in PV on the isentropic surface so this may or may not be a good thing to include... based on Cams work). I also need to fix the gap that is arising from how I regridded that data. I am missing the last 2 degrees 358-360.
+
+I had to use extrapolation in the regridder to capture this. (SAVE PV_ERA5data.ipynb) -> file created is `extend_pv350pt.p`
+
+In the file TempClassing.ipynb, there are easy specifications for changing the temperature region because of hw I had set it up. I currently have it in there to save the European region of interest (60-75N, 10-45W). 
+Based on the regions from Butler et al. 2017, I will also need an area from Nova Scotia (55-70N, 70-50W) and near the SE US (32-40N, 90-105W). 
+###################################################################################################################################################
+4/24/2025
+I broke the new graphcast container by trying to switch the version of tensorflow. HA! 
