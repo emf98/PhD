@@ -2,6 +2,8 @@ When I pushed this most recently, this was the case. I am waiting for ITs to fix
 
 If you look at one of my EOF Solver Python notebooks, you can see the massive error from tensorflow. 
 
+THERE IS NO DATA IN THIS FOLDER BECAUSE WE ARE ON GITHUB.
+
 #################################################
 Job Created 4/24/2025 (I BROKE THE CONTAINER)
 OKAY SO... In the same vein as the previous file I had to restart here but specifically within the graphcast container because... well.. the tensorflow container keeps dying. No idea why.
