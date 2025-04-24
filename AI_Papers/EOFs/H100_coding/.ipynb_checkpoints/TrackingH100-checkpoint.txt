@@ -1,5 +1,10 @@
+When I pushed this most recently, this was the case. I am waiting for ITs to fix the container again. hahaah
+
+If you look at one of my EOF Solver Python notebooks, you can see the massive error from tensorflow. 
+
+#################################################
 Job Created 4/24/2025 (I BROKE THE CONTAINER)
-OKAY SO... In the same vein as the previous file I had to restart here but specifically within the graphcast container becasue ... well.. the tensorflow container keeps dying. No idea why.
+OKAY SO... In the same vein as the previous file I had to restart here but specifically within the graphcast container because... well.. the tensorflow container keeps dying. No idea why.
 
 This is a COPY of the other file. I just want to see if the container makes a difference in the environment not killing itself every 30 minutes when my computer is open and connected to the internet. 
 
