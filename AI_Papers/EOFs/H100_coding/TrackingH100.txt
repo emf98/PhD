@@ -1,0 +1,71 @@
+When I pushed this most recently, this was the case. I am waiting for ITs to fix the container again. hahaah
+
+If you look at one of my EOF Solver Python notebooks, you can see the massive error from tensorflow. 
+
+#################################################
+Job Created 4/24/2025 (I BROKE THE CONTAINER)
+OKAY SO... In the same vein as the previous file I had to restart here but specifically within the graphcast container because... well.. the tensorflow container keeps dying. No idea why.
+
+This is a COPY of the other file. I just want to see if the container makes a difference in the environment not killing itself every 30 minutes when my computer is open and connected to the internet. 
+
+This file is going to get its own special file for temperature data files reflecting the three regions I pulled from the Butler et al 2017 paper. 
+
+#################################################
+Eurasia -> (60-75N, 10-45W)
+Nova Scotia -> (55-70N, 70-50W/290-310)
+SE United States -> (32-40N, 90-105W/255-270)
+
+I am also introducing a slightly modified PV file. This one extends down into the midlatitudes and contains some extrapolation to cover missing data from 358-360 longitude. (extend_pv350.p)
+
+I am going to create a few separate folders here to designate coding tasks:
+    - `EOF_Analysis` at 10 and 14 days, create the SOLVERS for each of my input features. 
+       THE SOLVERS WILL BE LOCATED IN THIS FILE.
+       -> EOF_def.py (definition statement)
+       -> 10Day_EOFSolvers.ipynb and 14Day_EOFSolvers.ipynb
+       
+    - `SFS_Model` at 10 and 14 days ... this is where it will get messy because there will be 12 separate python files to
+       conduct sequential feature selection for each region. 
+       I want to do one for each time step (8 features only) at each region BUT I want to see if there are differences 
+       between the two different classed datasets ...
+       
+       I PLAN TO START WITH JUST EUROPE AND MOVE ON TO THE SECOND AREAS AFTER I HAVE A WORK FLOW SOLIDIFIED. 
+       
+    - `ModelTraining` the EOF model testing and training folder ... this may also be designated by region. 
+
+#########
+I do not have to redo the EOF analysis because nothing data-wise has changed. The only thing that has changed is the environment. 
+I have to wonder if m y running 12 python scripts is what is killing it ... maybe. TBD. Don't know if you don't try. heh. 
+
+For 14-days I have the respective number of PCs:
+#### PV = 175 PCs. 
+#### EHF = 45 PCs. 
+#### GPH = 12 PCs. 
+
+For 10-days I have the respective number of PCs:
+#### PV = 200 PCs. 
+#### EHF = 55 PCs. 
+#### GPH = 12 PCs. 
+
+I got all four python files for conducting SFS set up for Europe. (6:50 PM 4/23) ... (4/24, I will be playing with these again.)
+/mnt/ef935217/Dissertation_Coding/Jo/SFS_Model/Europe/ (FILE LOCATION)
+########################################################################################
+nohup python -u Europe10Day_EOF.py >& E10_2output.txt & disown
+nohup python -u Europe_three_10Day_EOF.py >& E10_3output.txt & disown
+nohup python -u Europe14Day_EOF.py >& E14_2output.txt & disown
+nohup python -u Europe_three_14Day_EOF.py >& E14_3output.txt & disown
+
+
+ps -wx (check if job is running)
+
+I am also moving over/duplicating the files for NS and SEUS
+########################################################################################
+nohup python -u NS10Day_EOF.py >& N10_2output.txt & disown
+nohup python -u NS_three_10Day_EOF.py >& N10_3output.txt & disown
+nohup python -u NS14Day_EOF.py >& N14_2output.txt & disown
+nohup python -u NS_three_14Day_EOF.py >& N14_3output.txt & disown
+########################################################################################
+nohup python -u SEUS10Day_EOF.py >& S10_2output.txt & disown
+nohup python -u SEUS_three_10Day_EOF.py >& S10_3output.txt & disown
+nohup python -u SEUS14Day_EOF.py >& S14_2output.txt & disown
+nohup python -u SEUS_three_14Day_EOF.py >& S14_3output.txt & disown
+########################################################################################
