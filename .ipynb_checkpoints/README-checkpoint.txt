@@ -4,7 +4,8 @@ A lot of the actual data is not in here, but the code is! If you would like to s
 
 The folders are separated based on the manuscripts. 
 
-~ `Ellipse_Paper` is code from our 2024 Stratospheric Polar Vortex diagnostics work. This is looking to be sent to the Journal of Climate in January 2025.
+~ `Ellipse_Paper` is code from our 2024/2025 Stratospheric Polar Vortex diagnostics work. This was submitted for peer review to Monthly Weather Review in late May 2025. Some of this work can also be found in my SPVMD repository. 
+
 ~ AI_Papers contains my recent AI research. This includes using ANNs and RFs for identifying forecasts of opportunity for temperature anomalies based on features from the stratosphere. 
 
 Please email me with any questions. I generally respond within 1-2 business days. 
