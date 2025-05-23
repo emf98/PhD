@@ -1,104 +1,32 @@
-2/12/2025
-This will be my new attempt at creating a model that uses the EOFs as model input. 
-I need to save data ... regrid in the dataset import process perhaps? 
+"Forecast of Opportunity, EOFs"
+File created on May 7th, 2025. 
 
-ReformatERA5data.ipynb 
-I did actually fix this file to do the regridding in the downloading itself. 
+I wrote out by hand my exact process here, but this will be an extension of those words by providing context to the digital files I have stored. 
 
--> Z @ all levels for N of 30 - DONE (N30_gph_25deg.p) NEEDS TO BE DIVIDED BY 10
--> V @ all levels, T @ all levels for 45N-75N
+The first thing that needs to be done here is to save the correct data files, obviously. I have brought over the processing files. 
+I am running that to save vertical U wind, V and T for EHF, and GPH. 
+`ReformatERA5data`
+One quick note for U wind, I did end up saving between 90 and 20 latitude to make it a zonal-mean cross section. 
 
-PV_ERA5data.ipynb
-PV @ 100 at all lat and lon (cap_pv100hPa.p) ... needs to be regridded to 2.5, and that is in PV_Regridder.ipynb (pvu100_25deg.p)... LEAP DAY WAS ALSO REMOVED
+GPH will be reduced to a meridional mean and then daily anomalies. 
 
-2/17/2025
-I will return to this. I need to get data that has consistent pressure levels across each variable .... which this current state does NOT have. 
-V and T specifically do not have the proper # of levels between the surface and 1. 
+EHF is effectively meridional mean meridional eddy heat flux?
 
-###################################################################################################################################################
-3/25/2025
-I have returned to this in an effort to try again at reformatting data. 
-This time I will be pulling from Zheng's ERA 5 data in an attempt to have consistent levels (at least for GPH/VT ... PV is on its own).
+I need to ignore the last dimension of these to make them all 62 years. 
 
-Download V, T, and GPH in ReformatERA5data.ipynb ... I did NOT regrid because the data was already in a 2-degree resolution. I also tacked on the October values. 
+Need to calculate daily anomalies. 
 
-PV is only on 350 isentropic level, because I had to choose something. I can go back and save more of these. 
-GPH is N of 20 degrees. 
+#######################################################
+May 8th. 
+I created the file to do calculations for anomalies. `RemoveSeasonal` is the file.
+I believe for the EOF analysis, I do not need to do any additional WEIGHTING because all three features are vertical cross sections and already were multiplied by weights in calculating meridional/zonal means.
 
-V file = 1959_v_2deg.p
-T file  = 1959_t_2deg.p
-GPH file = 1959_gph_2deg.p (DIVIDED BY 10)
-PV file = cap_pv350pt.p
+I then went to save the appropriate temperature data in `TempClassing.`
+There are files in temp_data for two classes of temp anomalies and medians for all three regions. 
+Additionally, there are three classes of temp anomalies. 
 
-I had to only do 62 years because some data was missing. womp womp. 
-###################################################################################################################################################
-3/31/2025
-
-Okay, so... I now have a separate 2-degree file in here for surface temperatures as well. As a note for my future self, all of the lat/lon coordinates are 90-0 lat and 0-360 lon in 2-degrees; so just create numpy arrays to name. October to the end of March for data. Wahoo. 
-
-Full temp = FullNH-1959_temps_2deg.p
-
-I WILL need to remove leap days. Now onto attempting the EOF analysis. 
-###################################################################################################################################################
-4/1/2025
-
-I worked on the EOF test for PV. This initial go-ahead is in its own file (EOF_model_Attempt1). I also added in a ANN test at the bottom. 
-I am still working on ironing out whether I did this correctly with Zheng. 
-
-###################################################################################################################################################
-4/3/2025
-
-So, it seems that I did just fine with my initial test of a PV model. 
-Now, I am going to be testing to see whether or not I can choose the ideal # of PCs for the model by using Sequential Feature Selection. 
-file:///C:/Users/ef935217/Downloads/Wu%20et%20al%202022%20Modeling%20stratospheric%20polar%20vortex%20variation%20and%20identifying%20vortex%20extremes%20using%20explainable%20machine%20learning.pdf
-
-I made a separate folder for this. I will do files for each metric.
-
-I would probably benefit from doing a model with all of them but ... well ... lol not yet. 
-
-I started with PV and unfortunately realized that the model was sensitive + needed hyperparameter tuning. Hopefully this is the only time I need to do this for this model. Unlikely though lol. 
-###################################################################################################################################################
-4/7/2025
-
-After some goofing around with hyperparameter tuning and messing with the H100 containers, I now have a more solidified direction for myself. 
-NVIDIA_codefiles is where I will store relevant code and output from each INIT. 
-
-I am going to start with doing PC analysis on all three features. 
-I will choose the correct # of modes for each and concat them into one array. 
-Thereafter, I will use a RF model to conduct SFS.
-
-
-Please open a new SSH connection on a separate terminal session.
-
-ssh -L 8267:gpu003:8267 ngc
-
-Then your Jupyter Lab session will be available at: http://localhost:8267
-
-Your password is: lBvitd
-
-###################################################################################################################################################
-4/10/2025
-
-I have been working in the H100 server on this work. Check for updates in the NVIDIA_codefiles folder. 
-###################################################################################################################################################
-4/21/2025
-
-I came back here after some issues with tuning and model performance to reduce my predictands to three categories ... This is done with the intention of just, uhhhh, trying to get better predictions lmao. 
-"classedTHREE_europetempanoms.p"
-
-###################################################################################################################################################
-4/23/2025
-Back again!!
-
-So, update. Alex so graciously helped me get set up with a container that had tensorflow 2.14 instead of the more recent versions so I am now able to run keras-tuner! ... oh, and ITs set up a new graphcast container for me that is the same. lol. oooopsie. 
-
-That being said, following some promising results from initial work, I will now be diving head-on into this project. The first thing that needs to be done is updating my PV domain. I am not taking ALL of the data ... which is a slight problem. 
-So, going back in I am going to extend the extent of the PV domain into the mid-latitudes ... a small amount (I had a thought here that this may pick up some of the TPV-like features in PV on the isentropic surface so this may or may not be a good thing to include... based on Cams work). I also need to fix the gap that is arising from how I regridded that data. I am missing the last 2 degrees 358-360.
-
-I had to use extrapolation in the regridder to capture this. (SAVE PV_ERA5data.ipynb) -> file created is `extend_pv350pt.p`
-
-In the file TempClassing.ipynb, there are easy specifications for changing the temperature region because of hw I had set it up. I currently have it in there to save the European region of interest (60-75N, 10-45W). 
-Based on the regions from Butler et al. 2017, I will also need an area from Nova Scotia (55-70N, 70-50W) and near the SE US (32-40N, 90-105W). 
-###################################################################################################################################################
-4/24/2025
-I broke the new graphcast container by trying to switch the version of tensorflow. HA! 
+All temp files and the three vertical anomaly files were uploaded to the H100 environment.
+########################################################
+I had to take a break to write for the SPVMD manuscript, but I will be returning to this soon. Updating my Git now to reflect the changes to this work. 
+5/22/2025
+########################################################
