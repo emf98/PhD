@@ -1,3 +1,5 @@
+##ADDITIONAL DEFINITION STATEMENTS FOR ELLIPSE DIAGNOSTICS
+
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #Solve for the best fit for an ellipse then plot it!
@@ -32,16 +34,12 @@
 #   pages = "476--480"
 #  }
 # 
-# This is a more bulletproof version than that in the paper, incorporating
-# scaling to reduce roundoff error, correction of behaviour when the input 
-# data are on a perfect hyperbola, and returns the geometric parameters
-# of the ellipse, rather than the coefficients of the quadratic form.
 
 import os
 import numpy as np
 from numpy.linalg import eig, inv
 
-
+##fit ellipse definition statement
 def fitEllipse(x,y):
     x = x[:,np.newaxis]
     y = y[:,np.newaxis]
