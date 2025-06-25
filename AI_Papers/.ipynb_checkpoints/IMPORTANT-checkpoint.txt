@@ -10,3 +10,10 @@ Up-to-date testing code is in the ANN-code file.
 3/31/2025
 Finally added in the RF stuff I have been working on. 
 EOF analysis also initiated here. 
+
+###################################################
+
+6/25/2025
+
+More thorough updates of this work are in my remoteAI git repository.
+I managed to conenct to my workspace so I am able to update over there regularly. 
